@@ -1,0 +1,51 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	letter-spacing: .1em;
+}
+
+body{
+    overflow-y: scroll;
+}
+
+/*设置背景图片*/
+body:before {
+	content: '';
+	z-index: -1;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	background-image: url(preparation/bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	filter: blur(3px);
+}
+
+.sidebar{
+    content: '';
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: calc(100% - 56px);
+    max-width: 106px;
+    background-color: rgb(153,30,65);/*rgb用的是10进制...*/
+}
+
+.content{
+    content: '';
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 106px;
+    bottom: 0;
+    width: calc(100% - 56px);
+    max-width: 93%;
+    background-color: rgba(5,4,33,0.85);/*rgb用的是10进制...*/
+}
+
+/*自定义滚动条*/
