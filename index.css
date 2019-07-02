@@ -31,7 +31,7 @@ body:before {
 	top: 0;
 	bottom: 0;
 	width: 100%;
-	background-image: url(preparation/bg.jpg);
+	background-image: url(images/bg.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
