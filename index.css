@@ -2,11 +2,25 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	letter-spacing: .1em;
+    letter-spacing: .1em;
 }
 
 body{
-    overflow-y: scroll;
+    height: 100%;
+}
+
+hr{
+    color: white;
+}
+
+a:link{
+    color:rgb(153,30,65);
+    text-decoration: none;
+}
+
+a:visited{
+    color:white;
+    text-decoration: underline;
 }
 
 /*设置背景图片*/
@@ -22,6 +36,41 @@ body:before {
 	background-repeat: no-repeat;
 	background-position: center center;
 	filter: blur(3px);
+}
+
+a{
+   target: _blank; 
+}
+
+@font-face{
+    font-family: 'futura'; 
+    src:url('font/Futura.otf');
+}
+
+@font-face{
+    font-family: 'Adele'; 
+    src:url('font/ADELE.ttf') format('truetype');
+}
+
+.circle-image{
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.middle-text{/*means aligned in center*/
+    text-align: center;
+    display: block;
+}
+
+.clear{
+    clear:both;
+}
+
+#debug{
+    background-color: red;
+    border-color:black;
+    border-style: solid;
+    border-width: 10px;
 }
 
 .sidebar{
@@ -43,9 +92,190 @@ body:before {
     top: 0;
     left: 106px;
     bottom: 0;
-    width: calc(100% - 56px);
-    max-width: 93%;
+
+    height: 100%;
+    width: 100%;
+    max-width: calc(100% - 106px);/* 106 is the number of sidebar size*/
     background-color: rgba(5,4,33,0.85);/*rgb用的是10进制...*/
+    overflow-y: scroll;
 }
 
-/*自定义滚动条*/
+.mybar{
+    content: '';
+    z-index: 0;
+    float: left;
+    left: 0px;
+    top: 0px;
+    left: 10px;
+    bottom: 0;
+    width: 36%;
+    height:100%;
+}
+
+.mybar h1{
+    font-family: 'futura';
+    font-size: 64px;
+    color: rgb(153,30,65);
+}
+
+.mybar h2{
+    font-family: 'futura';
+    font-size: 48px;
+    color: white;
+}
+
+.mybar h3{
+    font-family: 'Adele';
+    font-size: 36px;
+    color: white;
+    font-style: italic;
+    letter-spacing: 0.6em;
+}
+
+/*mybar 中的内容*/
+.mybar-uppertext{
+    display: inline-block;
+    width: 100%;
+    height:150px;
+}
+
+.mybar .head-image-div{
+    text-align: center;
+    margin-top:20px;
+    width: 100%;
+    height: 150px;
+}
+
+
+.mybar .head-image{
+    max-width: 150px;
+    width: 100%;
+    margin: 0 auto;
+
+    -moz-box-shadow: 3px 3px 4px #000;
+    -webkit-box-shadow: 3px 3px 4px #000;
+    box-shadow: 20px 20px 20px rgb(16, 0, 19);
+}
+
+.mybar .name-text{
+    text-align: center;
+    height:120px;
+    margin-top:20px;
+}
+
+.name-text h1{
+    font-size: 80px;
+    color: white;
+    word-spacing: 0.2em;
+    font-family:"Microsoft JhengHei"
+}
+
+.mybar .logo-div{
+    text-align:center;
+    height: 80px;
+}
+
+.mybar .logo{
+    height:60px;
+}
+
+.mybar .intro-div{
+    text-align: center;
+    height:120px;
+}
+
+.mybar .intro-text{
+    font-family: "Adele";
+    word-spacing: 1px;
+    color: white;
+}
+
+.mybar .promote{
+    height :240px;/* 974 is the sum of height before*/
+}
+
+.mybar .promote hr{
+    position: relative;
+}
+
+.promote .tag{
+    float:left;
+    width:50%;
+    height:50%;
+    font-family: "Futura","微软雅黑";
+    color: white;
+}
+
+.promote .tag p{
+    text-indent: 2em;
+}
+
+.mybar .promote .tag h1 {
+    font-family: "Futura","微软雅黑";
+    font-size:24px;
+    color :white !important;
+}
+
+.promote .promote-content{
+    float:left;
+    width:50%;
+    height :50%;
+    font-family: "Futura","微软雅黑";
+    color :white !important;
+
+}
+
+.promote .promote-content p{
+    text-indent: 2em;
+}
+
+.promote .promote-content h1{
+    font-family: "Futura","微软雅黑";
+    font-size:24px;
+    color :white !important;
+}
+
+.article-content{
+    content: '';
+    z-index: 0;
+    float: left;
+    left: 0px;
+    top: 0px;
+    left: 10px;
+    bottom: 0;
+    width: 64%;/*运算符前后需要空格*/
+    height:100%;
+}
+
+
+
+/*自定义滚动条, 用于chrome之下*/
+::-webkit-scrollbar {
+    width: 50px; /*对垂直流动条有效*/
+    height: 10px; /*对水平流动条有效*/
+}
+
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+::-webkit-scrollbar-track{
+    background-color: rgba(0,0,0,0);
+    border-radius: 3px;
+}
+
+
+/*定义滑块颜色、内阴影及圆角*/
+::-webkit-scrollbar-thumb{
+    border-radius: 7px;
+    height: 10px;
+    background-color: rgb(153,30,65);
+}
+
+/*定义两端按钮的样式*/
+::-webkit-scrollbar-button {
+    background-color:rgb(153,30,65);
+}
+
+/*定义右下角汇合处的样式*/
+::-webkit-scrollbar-corner {
+    background:rgb(153,30,65);
+}
+
