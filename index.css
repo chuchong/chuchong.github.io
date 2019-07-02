@@ -19,7 +19,7 @@ a:link{
 }
 
 a:visited{
-    color:white;
+    color:rgb(153,30,65);
     text-decoration: underline;
 }
 
@@ -31,7 +31,7 @@ body:before {
 	top: 0;
 	bottom: 0;
 	width: 100%;
-	background-image: url(images/bg.jpg);
+	background-image: url(https://i.loli.net/2019/07/03/5d1ba55aaaf9a15878.jpg), url(images/bg.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
