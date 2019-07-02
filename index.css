@@ -97,7 +97,8 @@ a{
     width: 100%;
     max-width: calc(100% - 106px);/* 106 is the number of sidebar size*/
     background-color: rgba(5,4,33,0.85);/*rgb用的是10进制...*/
-    overflow-y: scroll;
+
+    overflow-y: auto;
 }
 
 .mybar{
@@ -196,6 +197,7 @@ a{
 
 .mybar .promote hr{
     position: relative;
+    z-index: 0;
 }
 
 .promote .tag{
@@ -245,13 +247,107 @@ a{
     bottom: 0;
     width: 64%;/*运算符前后需要空格*/
     height:100%;
+    overflow-y: scroll;
+}
+
+.article-list{
+    content: '';
+    z-index: 1;
+    position: relative;
+    left:10%;
+    top:20px;
+    width:86%;
+    height:100%;
+}
+
+.article-box{
+    content: '';
+    z-index: 2;
+    float: top;
+    left:10%;
+    top:20px;
+    width:100%;
+    height:40%;
+}
+
+
+.article-card{
+    content: '';
+    z-index: 3;
+    float: top;
+    left:0%;
+    top:10px;
+    width:100%;
+    height:80%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    font-family: "Futura","微软雅黑";
+
+    overflow-y: auto;
+
+    -moz-box-shadow: 3px 3px 4px #000;
+    -webkit-box-shadow: 3px 3px 4px #000;
+    box-shadow: 20px 20px 20px rgb(16, 0, 19);
+}
+
+.article-card h4{
+    content: '';
+    color:rgba(5,4,33,0.85);
+    font-size: 50px;
+    text-align: center;
+}
+
+.article-card .cutline{
+    width: 96%;
+    margin-left: 2%;
+    height: 10px;
+    z-index: 5;
+    border-radius: 5px;
+    background-color: rgb(97, 107, 151) !important;
+}
+
+.article-card .time{
+    content: '';
+    color:rgb(135, 136, 141);
+    font-size: 16 px;
+}
+
+.article-card p{
+    content :'';
+    color: rgb(97, 107, 151);
+    font-size: 24px;
+    text-indent:2em;
+}
+
+.read-more-button{
+    float:right;
+    margin-top: 2%;
+    margin-right: 5%;
+    width:20%;
+    height: 20%;
+    border-radius: 35px;
+    border: 0px;
+    zoom:1;
+
+    background-color: rgb(97, 107, 151);
+}
+
+.read-more-button:hover{
+    background-color: rgb(199, 165, 145);
+    transition: all 0.4s;
+}
+
+.read-more-button p{
+    text-align: center;
+    text-indent: 0em;
+    color: white !important;
 }
 
 
 
 /*自定义滚动条, 用于chrome之下*/
 ::-webkit-scrollbar {
-    width: 50px; /*对垂直流动条有效*/
+    width: 10px; /*对垂直流动条有效*/
     height: 10px; /*对水平流动条有效*/
 }
 
