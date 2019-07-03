@@ -6,15 +6,54 @@
 <base target="_blank" />
 <title>Blog of 楚虫</title>
 
+<script type="text/javascript" src="jquery.js"></script>
+<script>
+function toggle(){
+    var navBar = $("<p>等待开发</p>");
+    var sideBar = $("#toggleBar");
+    //我的逻辑上是先判断没有这个class，没有的话就添加，这个添加动作会触发宽度加长的过渡效果
+    if (!sideBar.hasClass("addWidth")) {
+        $("#toggleBar").addClass("addWidth");
+        navBar.addClass("dirty");
+        $("#first-child-of-toggleBar").prepend(navBar);
+    }
+    //同理，展开之后要切换，移除这个class来触发减小宽度的过渡效果
+    else {
+        $("#toggleBar").removeClass("addWidth");
+        $(".dirty").remove();
+    }
+}
+</script>
+
+<style type="text/css">
+    .dirty{
+        opacity: 1;
+    }
+
+    .addWidth {
+            width:800px;
+            max-width: 46%!important;
+            transition: 1s;
+    }
+
+    .nonOpacity{
+        opacity: 1!important;
+    }
+</style>
+
 </head>
 
+
+
 <body>
-<div class = "sidebar">
-    <div style = "height: 40%; float: left; width:100%">
+
+<div class = "sidebar" id = "toggleBar">
+
+    <div style = "height: 40%; float: left; width:100%" id = "first-child-of-toggleBar">
     </div>
 
     <div style = "height: 15%; float: left; width:100%;">
-        <button class ="button"><!--TODO:之后将开发为一个导航栏-->
+        <button class ="button"  onclick="toggle()"><!--TODO:之后将开发为一个导航栏-->
             <p>>></p>
         </button>
     </div>
@@ -67,14 +106,14 @@
                 <div style="width:25%; height:50%; float:left "></div>
                 <div class = "tag" >
                     <h1>&nbsp;# tag</h1>
-                    <a href = "#"><p>日志</p></a>
+                    <a><p>日志</p></a>(有待开发)
                 </div>
 
                 <div class = "clear"></div>
                 <div style="width:25%; height:50%; float:left "></div>
                 <div class = "promote-content" >
                     <h1>&nbsp;推荐</h1>
-                    <a href = "#"><p>我的第一篇日志</p></a> <!-- 需要补充链接地址-->
+                    <a href = "first_diary.html"><p>我的第一篇日志</p></a> <!-- 需要补充链接地址-->
                 </div>
             </div>
         </div>
@@ -95,8 +134,8 @@
                     <br/>
                     <div class = "time">2019/07/03</div>
                     <br/>
-                    <p>纯手写的网页让我想崩溃...特别是我发现我写了半天都适配的只是我的第二显示器的时候</p>
-                    <a href="#"><button class = "read-more-button">
+                    <p>纯手写的网页让我想崩溃...特别是我发现我写了半天都适配的只是我的第二显示器的时候。</p>
+                    <a href="first_diary.html"><button class = "read-more-button">
                         <p>阅读更多</p>
                     </button></a>
                 </div>
@@ -104,13 +143,13 @@
 
             <div class = "article-box">
                 <div class = "article-card">
-                    <br><h4>施工中..(前端感受)</h4>
+                    <br><h4>windows下jekyll配置+套模板使用</h4>
                     <div class = "cutline"> </div>
                     <br/>
                     <div class = "time">2019/07/03</div>
                     <br/>
-                    <p>确实很让人有成就感,学了那么久专业做出来的东西第一次算还能看.不过为了防止个人隐私泄露,我用的化名.</p>
-                    <a href="#"><button class = "read-more-button">
+                    <p>本次日志内容界面我是使用jekyll来制作的，我的html+css第一次作业是装在windows系统中的，于是想顺便用windows搭建jekyll环境进行开发。</p>
+                    <a href="jekyll_under_windows.html"><button class = "read-more-button">
                         <p>阅读更多</p>
                     </button></a>
                 </div>
@@ -118,15 +157,15 @@
 
             <div class = "article-box">
                <div class = "article-card">
-                    <br><h4>施工中..(想说的话)</h4>
+                    <br><h4>一些吐槽</h4>
                     <div class = "cutline"> </div>
                     <br/>
                     <div class = "time">2019/07/03</div>
                     <br/>
-                    <p>希望课堂上有些知识点能讲慢一些,细一些...有时感觉听不懂了</p>
-                    <a href="#"><button class = "read-more-button">
+                    <p>jekyll生成的网页是服务器端动态生成的静态网页...我还要再local:4000下下载了再放过来...好浪费空间</p>
+                    <!-- <a ><button class = "read-more-button">
                         <p>阅读更多</p>
-                    </button></a>
+                    </button></a> -->
                 </div>
             </div>
         </div>

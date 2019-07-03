@@ -75,21 +75,24 @@ a{
 
 .sidebar{
     content: '';
-    z-index: 0;
+    z-index: 10;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    width: calc(100% - 56px);
+    width: calc(100%);
     max-width: 106px;
     background-color: rgb(153,30,65);/*rgb用的是10进制...*/
+    transition: 1s;
 }
 
 .sidebar .button{
     border-radius: 50%;
-    width: 80%;
-    height: 80%;
-    margin-left: 10%;
+    width: 80px;
+    height: 80px;
+    max-width:100%;
+    margin-right: 10%;
+    float: right;
     border: 0;
     background-color:white;
     text-align: center;
