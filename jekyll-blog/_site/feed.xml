@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/jekyll-blog/" rel="alternate" type="text/html" /><updated>2019-07-03T19:38:09+08:00</updated><id>http://localhost:4000/jekyll-blog/feed.xml</id><title type="html">BLOG of 楚虫</title><subtitle>A student from THU School of Software, who loves math, painting and programming.</subtitle><author><name>Li</name></author><entry><title type="html">windows下jekyll配置+套模板使用</title><link href="http://localhost:4000/jekyll-blog/2019/07/03/jekyll.html" rel="alternate" type="text/html" title="windows下jekyll配置+套模板使用" /><published>2019-07-03T00:00:00+08:00</published><updated>2019-07-03T00:00:00+08:00</updated><id>http://localhost:4000/jekyll-blog/2019/07/03/jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll-blog/2019/07/03/jekyll.html">&lt;p&gt;本次日志内容界面我是使用jekyll来制作的，我的html+css第一次作业是装在windows系统中的，于是想顺便用windows搭建jekyll环境进行开发。&lt;/p&gt;
+
+&lt;p&gt;这个环境有点难搭…&lt;/p&gt;
+
+&lt;h2 id=&quot;搭环境&quot;&gt;搭环境&lt;/h2&gt;
+&lt;p&gt;首先，参考&lt;a href=&quot;https://www.jianshu.com/p/9f198d5779e6&quot;&gt;这篇教程&lt;/a&gt;和&lt;a href=&quot;http://jekyll-windows.juthilo.com/3-syntax-highlighting/&quot;&gt;jekyll官网给的教程&lt;/a&gt;有一种方法。(做完了才发现有第二种更简便的方法，果然不读官方文档是不行的)。&lt;/p&gt;
+
+&lt;h3 id=&quot;通过ruby-gem安装&quot;&gt;通过ruby gem安装&lt;/h3&gt;
+&lt;h4 id=&quot;1&quot;&gt;1&lt;/h4&gt;
+&lt;p&gt;首先打开&lt;a href=&quot;https://rubyinstaller.org/downloads/&quot;&gt;ruby下载页&lt;/a&gt;,直接下载ruby+devkit并安装，记得一路打勾，安装好后记得重启(windows环境变量需要重启生效)。&lt;/p&gt;
+&lt;h4 id=&quot;2&quot;&gt;2&lt;/h4&gt;
+&lt;p&gt;然后打开一个命令行(我用的anaconda prompt),输入&lt;code class=&quot;highlighter-rouge&quot;&gt;gem install jekyll&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;gem install rouge&lt;/code&gt;,在&lt;code class=&quot;highlighter-rouge&quot;&gt;ruby&lt;/code&gt;安装目录下找到&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;并打开（用notepad++，不要用记事本，否则会引入BOM头)，加入语句&lt;code class=&quot;highlighter-rouge&quot;&gt;highlighter: rouge&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;虽然我感觉没用到&lt;code class=&quot;highlighter-rouge&quot;&gt;highlighter&lt;/code&gt;就配好了环境，但还是推荐最好不要省略这步。&lt;/p&gt;
+&lt;h4 id=&quot;21&quot;&gt;2.1&lt;/h4&gt;
+&lt;p&gt;如果不想用&lt;code class=&quot;highlighter-rouge&quot;&gt;rouge&lt;/code&gt;,可以换另一个。如下&lt;/p&gt;
+
+&lt;p&gt;安装python2.7。通过&lt;a href=&quot;https://pip.pypa.io/en/latest/installing/&quot;&gt;python给的文档&lt;/a&gt;安装&lt;code class=&quot;highlighter-rouge&quot;&gt;pip&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python get-pip.py #存储get-pip.py到本地，在本地文件夹路径下输入
+python -m pip install Pygments
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;然后又要在&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;中加上&lt;code class=&quot;highlighter-rouge&quot;&gt;python -m pip install Pygments&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h4 id=&quot;3&quot;&gt;3&lt;/h4&gt;
+&lt;p&gt;然后按照官方的,&lt;code class=&quot;highlighter-rouge&quot;&gt;gem install wdm&lt;/code&gt;，可能是由于官方文档较为古老。他说这步后就能使用了，实际上你这时去&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;会报错，根据报错内容，我又&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install bundle
+gem install tzinfo #这步安装的tzinfo过新了,超过了bundle需求的版本
+bundle update #这样才为bundle找到了可靠的tzinfo版本
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;终于安装好了jekyll环境了，通过&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll new &amp;lt;name&amp;gt; #建立新文件夹里面存环境
+cd &amp;lt;name&amp;gt;
+jekyll serve --watch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;如果没报错，你这时打开默认的&lt;a href=&quot;localhost:4000&quot;&gt;4000端口&lt;/a&gt;,应该就能看到还行的网页了。&lt;/p&gt;
+&lt;h3 id=&quot;直接用-windows-subsystem-for-linux&quot;&gt;直接用 Windows Subsystem for Linux&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://jekyllrb.com/docs/installation/windows/#installing-jekyll&quot;&gt;jekyll官网给的最新教程&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;看文档能够用 Windows Subsystem for Linux 模仿Linux一般丝滑的配置环境，不过我没试过。想必也比第一种简单太多&lt;/p&gt;
+
+&lt;h2 id=&quot;套模板&quot;&gt;套模板&lt;/h2&gt;
+&lt;p&gt;jekyll跟latex一样，我感觉都是面向“物质文化遗产”编程，一般刚开始选好一个模板就能写写博客日志了，不过要改模板样式倒是非常困难。&lt;/p&gt;
+
+&lt;p&gt;我参考的是&lt;a href=&quot;https://github.com/chuchong/jekyll-theme-prologue&quot;&gt;这位chrisbobbe的jekyll主题&lt;/a&gt;，因为感觉和自己的还比较接近，至少都是左右布局。&lt;/p&gt;
+
+&lt;p&gt;同样的，我也参考了&lt;a href=&quot;https://www.jianshu.com/p/9f198d5779e6&quot;&gt;这篇教程&lt;/a&gt;，和chrisbobble的帮助文档，好不容易才套好模板。&lt;/p&gt;
+
+&lt;p&gt;以下内容以jekyll-theme-prologue主题为例。&lt;/p&gt;
+&lt;h3 id=&quot;新建环境&quot;&gt;新建环境&lt;/h3&gt;
+&lt;p&gt;先随便新建个环境&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll new &amp;lt;name&amp;gt; #建立新文件夹里面存环境
+cd &amp;lt;name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;改gemfile&quot;&gt;改Gemfile&lt;/h3&gt;
+&lt;p&gt;在环境中有个Gemfile文件，我们把Gemfile文件打开，把&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem “minimia&quot; , &quot;~&amp;gt;2.0&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;改成&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &quot;jekyll-theme-prologue&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;jekyll-theme-prologue就是我们要用的主题的名字&lt;/p&gt;
+
+&lt;p&gt;然后继续留在这个文件夹&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;复制过来&quot;&gt;复制过来&lt;/h3&gt;
+&lt;p&gt;最后把除了Gemfile的文件都从https://github.com/chuchong/jekyll-theme-prologue 复制到文件夹里替换。这时&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll serve --watch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;应该就好了,我的做法可能比较暴力…&lt;/p&gt;
+
+&lt;h2 id=&quot;jekyll注意事项&quot;&gt;jekyll注意事项&lt;/h2&gt;
+&lt;p&gt;虽然我说实话，还没太弄懂这倒地怎么玩，但也发现了jekyll的一些注意事项。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;文件名不要出现中文，可能会影响网页生成&lt;/li&gt;
+  &lt;li&gt;_posts文件夹中存放日志，格式必须为 &lt;code class=&quot;highlighter-rouge&quot;&gt;日期+名字&lt;/code&gt;,而且日期具体到小时之后就要加时区了。&lt;/li&gt;
+  &lt;li&gt;yaml不能用tab缩进&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;等等….&lt;/p&gt;
+
+&lt;p&gt;确实有点麻烦，弄了半天要改模板布局都比较困难，结果还是暂时只能做做博客日志，虽然用markdown写日志的感觉还不错。&lt;/p&gt;</content><author><name>Li</name></author><category term="jekyll" /><category term="配环境" /><summary type="html">本次日志内容界面我是使用jekyll来制作的，我的html+css第一次作业是装在windows系统中的，于是想顺便用windows搭建jekyll环境进行开发。</summary></entry><entry><title type="html">第一篇日志</title><link href="http://localhost:4000/jekyll-blog/2019/07/03/first-blog.html" rel="alternate" type="text/html" title="第一篇日志" /><published>2019-07-03T00:00:00+08:00</published><updated>2019-07-03T00:00:00+08:00</updated><id>http://localhost:4000/jekyll-blog/2019/07/03/first-blog</id><content type="html" xml:base="http://localhost:4000/jekyll-blog/2019/07/03/first-blog.html">&lt;h1 id=&quot;我的第一篇日志&quot;&gt;我的第一篇日志&lt;/h1&gt;
+
+&lt;h2 id=&quot;本次作业的体会&quot;&gt;本次作业的体会&lt;/h2&gt;
+
+&lt;p&gt;纯手写的网页让我想崩溃…特别是我发现我写了半天都适配的只是我的第二显示器的时候。&lt;/p&gt;
+
+&lt;p&gt;但是确实很让人有成就感，学了那么久专业做出来的东西第一次算还能看。不过为了防止个人隐私泄露,我博客名用的化名。&lt;/p&gt;
+
+&lt;h2 id=&quot;对课程的期待&quot;&gt;对课程的期待&lt;/h2&gt;
+
+&lt;p&gt;希望学完后我的个人网页能很好看，希望能做一款有趣的游戏。&lt;/p&gt;
+
+&lt;h2 id=&quot;对前端的理解&quot;&gt;对前端的理解&lt;/h2&gt;
+
+&lt;p&gt;我脑中 前端{&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;能默背出二十多种不同的编程语言名字。&lt;/li&gt;
+  &lt;li&gt;浏览器常年保持40+页面&lt;/li&gt;
+  &lt;li&gt;恨不得买六块屏幕&lt;/li&gt;
+  &lt;li&gt;竟然还有用ie的人&lt;/li&gt;
+  &lt;li&gt;我有个创业点子，就差你了&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+&lt;h2 id=&quot;对老师助教想说的话&quot;&gt;对老师助教想说的话&lt;/h2&gt;
+
+&lt;p&gt;可以延长些ddl就好了，比如这个网页。&lt;/p&gt;</content><author><name>Li</name></author><summary type="html">我的第一篇日志</summary></entry></feed>

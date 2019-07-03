@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<!--
+Prologue by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+Jekyll integration by Chris Bobbe | chrisbobbe.github.io
+-->
+<html><head><!-- Robots -->
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="http://localhost:4000/jekyll-blog/2019/07/03/jekyll.html" /><!-- Title, description, author --><title>windows下jekyll配置+套模板使用 | BLOG of 楚虫 - chuchong</title>
+  <meta name="description" content="A student from THU School of Software, who loves math, painting and programming." />
+  <meta name="author" content="Li" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="windows下jekyll配置+套模板使用 | BLOG of 楚虫 - chuchong" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/jekyll-blog/assets/images/head.jpg" />
+  <meta property="og:url" content="http://localhost:4000/jekyll-blog/2019/07/03/jekyll.html" />
+  <meta property="og:site_name" content="BLOG of 楚虫" />
+  <meta property="og:description" content="A student from THU School of Software, who loves math, painting and programming." />
+  
+  <!-- Styles -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="/jekyll-blog/assets/js/ie/html5shiv.js" defer></script><![endif]-->
+  <link rel="stylesheet" href="/jekyll-blog/assets/css/main.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/jekyll-blog/assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/jekyll-blog/assets/css/ie9.css" /><![endif]-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+  <script src="/jekyll-blog/assets/js/jquery.scrolly.min.js" defer></script>
+  <script src="/jekyll-blog/assets/js/jquery.scrollzer.min.js" defer></script>
+  <script src="/jekyll-blog/assets/js/skel.min.js" defer></script>
+  <script src="/jekyll-blog/assets/js/util.js" defer></script>
+  <!--[if lte IE 8]><script src="/jekyll-blog/assets/js/ie/respond.min.js" defer></script><![endif]-->
+  <script src="/jekyll-blog/assets/js/main.js" defer></script>
+
+</head><body><!-- Header -->
+<div id="header">
+  <div class="top"><!-- Logo -->
+<div id="logo">
+  <a href="http://localhost:4000/jekyll-blog/" id="home-link">
+    <span class="image avatar48"><img src="/jekyll-blog/assets/images/head.jpg" alt="Avatar of Li" /></span>
+    <h1 id="title">BLOG of 楚虫</h1>
+    <p>chuchong</p>
+  </a>
+</div><!-- Nav -->
+<nav id="nav">
+  <ul><li><a href="http://localhost:4000/jekyll-blog/" id="home-page-link">
+            <span class="icon fa-home">Home Page</span>
+          </a></li><li><a href="http://localhost:4000/jekyll-blog/blog.html" id="blog-link">
+            <span class="icon fa-pencil-alt">Blog</span>
+          </a></li><li><a href="http://localhost:4000/jekyll-blog/about/" id="about-link">
+            <span class="icon fa-link">About</span>
+          </a></li></ul>
+</nav></div>
+  <div class="bottom"><!-- Social Icons -->
+<ul class="icons"><li><a href="https://github.com/chuchong" class="icon-b fa-github"><span class="label">GitHub</span></a></li><li><a href="mailto:lisiyu201695@gmail.com" class="icon fa-envelope"><span class="label">Email</span></a></li></ul>
+</div>
+</div>
+<!-- Main -->
+<div id="main">
+	<!-- Post -->
+	<article class="shade-two">
+	  <div class="container">
+			<header>
+				<h2>windows下jekyll配置+套模板使用</h2>
+				<p>03 July 2019</p>
+			</header><p>本次日志内容界面我是使用jekyll来制作的，我的html+css第一次作业是装在windows系统中的，于是想顺便用windows搭建jekyll环境进行开发。</p>
+
+<p>这个环境有点难搭…</p>
+
+<h2 id="搭环境">搭环境</h2>
+<p>首先，参考<a href="https://www.jianshu.com/p/9f198d5779e6">这篇教程</a>和<a href="http://jekyll-windows.juthilo.com/3-syntax-highlighting/">jekyll官网给的教程</a>有一种方法。(做完了才发现有第二种更简便的方法，果然不读官方文档是不行的)。</p>
+
+<h3 id="通过ruby-gem安装">通过ruby gem安装</h3>
+<h4 id="1">1</h4>
+<p>首先打开<a href="https://rubyinstaller.org/downloads/">ruby下载页</a>,直接下载ruby+devkit并安装，记得一路打勾，安装好后记得重启(windows环境变量需要重启生效)。</p>
+<h4 id="2">2</h4>
+<p>然后打开一个命令行(我用的anaconda prompt),输入<code class="highlighter-rouge">gem install jekyll</code>,<code class="highlighter-rouge">gem install rouge</code>,在<code class="highlighter-rouge">ruby</code>安装目录下找到<code class="highlighter-rouge">_config.yml</code>并打开（用notepad++，不要用记事本，否则会引入BOM头)，加入语句<code class="highlighter-rouge">highlighter: rouge</code>。</p>
+
+<p>虽然我感觉没用到<code class="highlighter-rouge">highlighter</code>就配好了环境，但还是推荐最好不要省略这步。</p>
+<h4 id="21">2.1</h4>
+<p>如果不想用<code class="highlighter-rouge">rouge</code>,可以换另一个。如下</p>
+
+<p>安装python2.7。通过<a href="https://pip.pypa.io/en/latest/installing/">python给的文档</a>安装<code class="highlighter-rouge">pip</code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python get-pip.py #存储get-pip.py到本地，在本地文件夹路径下输入
+python -m pip install Pygments
+</code></pre></div></div>
+<p>然后又要在<code class="highlighter-rouge">_config.yml</code>中加上<code class="highlighter-rouge">python -m pip install Pygments</code>。</p>
+
+<h4 id="3">3</h4>
+<p>然后按照官方的,<code class="highlighter-rouge">gem install wdm</code>，可能是由于官方文档较为古老。他说这步后就能使用了，实际上你这时去<code class="highlighter-rouge">jekyll serve</code>会报错，根据报错内容，我又</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install bundle
+gem install tzinfo #这步安装的tzinfo过新了,超过了bundle需求的版本
+bundle update #这样才为bundle找到了可靠的tzinfo版本
+</code></pre></div></div>
+<p>终于安装好了jekyll环境了，通过</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new &lt;name&gt; #建立新文件夹里面存环境
+cd &lt;name&gt;
+jekyll serve --watch
+</code></pre></div></div>
+<p>如果没报错，你这时打开默认的<a href="localhost:4000">4000端口</a>,应该就能看到还行的网页了。</p>
+<h3 id="直接用-windows-subsystem-for-linux">直接用 Windows Subsystem for Linux</h3>
+
+<p><a href="https://jekyllrb.com/docs/installation/windows/#installing-jekyll">jekyll官网给的最新教程</a></p>
+
+<p>看文档能够用 Windows Subsystem for Linux 模仿Linux一般丝滑的配置环境，不过我没试过。想必也比第一种简单太多</p>
+
+<h2 id="套模板">套模板</h2>
+<p>jekyll跟latex一样，我感觉都是面向“物质文化遗产”编程，一般刚开始选好一个模板就能写写博客日志了，不过要改模板样式倒是非常困难。</p>
+
+<p>我参考的是<a href="https://github.com/chuchong/jekyll-theme-prologue">这位chrisbobbe的jekyll主题</a>，因为感觉和自己的还比较接近，至少都是左右布局。</p>
+
+<p>同样的，我也参考了<a href="https://www.jianshu.com/p/9f198d5779e6">这篇教程</a>，和chrisbobble的帮助文档，好不容易才套好模板。</p>
+
+<p>以下内容以jekyll-theme-prologue主题为例。</p>
+<h3 id="新建环境">新建环境</h3>
+<p>先随便新建个环境</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new &lt;name&gt; #建立新文件夹里面存环境
+cd &lt;name&gt;
+</code></pre></div></div>
+<h3 id="改gemfile">改Gemfile</h3>
+<p>在环境中有个Gemfile文件，我们把Gemfile文件打开，把</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem “minimia" , "~&gt;2.0"
+</code></pre></div></div>
+<p>改成</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem "jekyll-theme-prologue"
+</code></pre></div></div>
+<p>jekyll-theme-prologue就是我们要用的主题的名字</p>
+
+<p>然后继续留在这个文件夹</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle install
+</code></pre></div></div>
+
+<h3 id="复制过来">复制过来</h3>
+<p>最后把除了Gemfile的文件都从https://github.com/chuchong/jekyll-theme-prologue 复制到文件夹里替换。这时</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll serve --watch
+</code></pre></div></div>
+
+<p>应该就好了,我的做法可能比较暴力…</p>
+
+<h2 id="jekyll注意事项">jekyll注意事项</h2>
+<p>虽然我说实话，还没太弄懂这倒地怎么玩，但也发现了jekyll的一些注意事项。</p>
+
+<ol>
+  <li>文件名不要出现中文，可能会影响网页生成</li>
+  <li>_posts文件夹中存放日志，格式必须为 <code class="highlighter-rouge">日期+名字</code>,而且日期具体到小时之后就要加时区了。</li>
+  <li>yaml不能用tab缩进</li>
+</ol>
+
+<p>等等….</p>
+
+<p>确实有点麻烦，弄了半天要改模板布局都比较困难，结果还是暂时只能做做博客日志，虽然用markdown写日志的感觉还不错。</p>
+</div>
+	</article>
+</div><!-- Footer -->
+<div id="footer">
+  
+  <!-- Copyright -->
+  <ul class="copyright">
+    
+      <li>&copy;BLOG of 楚虫. All rights reserved.</li>
+    
+    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    <li>Jekyll integration: <a href="https://chrisbobbe.github.io/">Chris Bobbe</a></li>
+  </ul>
+  
+</div></body>
+</html>
