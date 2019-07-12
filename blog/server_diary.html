@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- Robots -->
+  <meta name="robots" content="index, follow"><link rel="canonical" ><!-- Title, description, author --><title>第二次作业js parse算术表达式 | BLOG of 楚虫 - chuchong</title>
+  <meta name="description" content="A student from THU School of Software, who loves math, painting and programming.">
+  <meta name="author" content="Li">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="第二次作业js parse算术表达式 | BLOG of 楚虫 - chuchong">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../images/head.jpg">
+  <meta property="og:site_name" content="BLOG of 楚虫">
+  <meta property="og:description" content="A student from THU School of Software, who loves math, painting and programming.">
+  
+  <!-- Styles -->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--[if lte IE 8]><script src="/jekyll-blog/assets/js/ie/html5shiv.js" defer></script><![endif]-->
+  <link rel="stylesheet" href="./jekyll_blog/main.css">
+  <!--[if lte IE 8]><link rel="stylesheet" href="/jekyll-blog/assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/jekyll-blog/assets/css/ie9.css" /><![endif]-->
+  <link rel="stylesheet" href="./jekyll_blog/all.css">
+
+  <!-- Scripts -->
+  <script src="./jekyll_blog/jquery.min.js.下载" defer=""></script>
+  <script src="./jekyll_blog/jquery.scrolly.min.js.下载" defer=""></script>
+  <script src="./jekyll_blog/jquery.scrollzer.min.js.下载" defer=""></script>
+  <script src="./jekyll_blog/skel.min.js.下载" defer=""></script>
+  <script src="./jekyll_blog/util.js.下载" defer=""></script>
+  <!--[if lte IE 8]><script src="/jekyll-blog/assets/js/ie/respond.min.js" defer></script><![endif]-->
+  <script src="./jekyll_blog/main.js.下载" defer=""></script>
+
+</head><body class=""><!-- Header -->
+<div id="header" style = "background-color:rgb(153,30,65);">
+  <div class="top"><!-- Logo -->
+<div id="logo">
+  <a  id="home-link" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+    <span class="image avatar48"><img src="../images/head.jpg" style = "border-radius: 50%" alt="Avatar of Li"></span>
+    <h1 id="title">BLOG of 楚虫</h1>
+    <p>chuchong</p>
+  </a>
+</div><!-- Nav -->
+<nav id="nav">
+  <ul><li><a  href = "../index.html" id="home-page-link" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <span >Home Page</span>
+          </a>
+        <!-- </li><li><a  id="blog-link" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"> -->
+            <!-- <span class="icon fa-pencil-alt">Blog</span>
+          </a></li><li><a id="about-link" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <span class="icon fa-link">About</span>
+          </a></li></ul> -->
+</nav></div>
+  <div class="bottom"><!-- Social Icons -->
+<!-- <ul class="icons"><li><a href="https://github.com/chuchong" class="icon-b fa-github" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><span class="label">GitHub</span></a></li><li><a href="mailto:lisiyu201695@gmail.com" class="icon fa-envelope" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><span class="label">Email</span></a></li></ul> -->
+</div>
+</div>
+<!-- Main -->
+<div id="main">
+	<!-- Post -->
+	<article class="shade-two">
+	  <div class="container">
+			<header>
+				<h2>服务器实验小结</h2>
+				<p>11 July 2019</p>
+			</header><h1 id="服务器实验小结">服务器实验小结</h1>
+
+<p>我使用<code class="highlighter-rouge">express + node.js</code>来完成的本次作业.</p>
+
+<h2 id="静态网页">静态网页</h2>
+
+<p>静态网页通过调用express.static方法即可,而我直接将github上的主页clone到了服务器端,每次更新时只需要<code class="highlighter-rouge">git pull</code></p>
+
+<h2 id="将服务器设为git服务器">将服务器设为git服务器</h2>
+
+<p>实际上,也可以将服务器设置为git终端服务器,这样只需要在其他客户端<code class="highlighter-rouge">push</code>上去就行了,我本来想用这做一个基于<code class="highlighter-rouge">hexo</code>的个人博客界面,但这样难免使用<code class="highlighter-rouge">ngix</code>进行代理,力有所怠,于是未能实现.</p>
+
+<h2 id="api接口">api接口</h2>
+
+<p>api接口我的实现比较暴力,对于每个请求都单独实现.具体内容我是参考<a href="https://www.runoob.com/nodejs/nodejs-express-framework.html">这篇express教程</a>,只是稍有一些特殊的地方</p>
+
+<h3 id="读取multipartform-data数据">读取multipart/form-data数据</h3>
+
+<p>虽然<code class="highlighter-rouge">body_parser</code>较多被用来解析文件,但是它不支持<code class="highlighter-rouge">multipart/form-data</code>数据格式,于是我使用了<code class="highlighter-rouge">connect-multiparty</code>库,导入</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var multipart = require('connect-multiparty')
+var multipartMiddleware = multipart()
+</code></pre></div></div>
+
+<p>之后使用<code class="highlighter-rouge">multipartMiddleware</code>中间件就能读取<code class="highlighter-rouge">req.body</code>了.</p>
+
+<h2 id="eslint使用">eslint使用</h2>
+
+<p>试验中我将<code class="highlighter-rouge">eslint</code>和<code class="highlighter-rouge">VScode</code>搭配使用,可以自动在ide中修正代码,非常方便.由于我使用的是<code class="highlighter-rouge">windows</code>系统,中间也经过些许波折–但只要一直<code class="highlighter-rouge">cnpm install ***</code>(***是VScode中报错缺少的库就好了).</p>
+
+<p>另外在<code class="highlighter-rouge">VScode </code>中设置</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "eslint.alwaysShowStatus": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.run": "onType",
+    "eslint.options": {
+        "configFile": "C:/Users/DELL/.eslintrc.js"
+    },
+    "eslint.validate": [
+        "javascript",
+    ]
+}
+</code></pre></div></div>
+
+<p>就能愉快地享受<code class="highlighter-rouge">VScode</code>中自动<code class="highlighter-rouge">eslint</code>改正语法了.</p>
+</div>
+	</article>
+</div><!-- Footer -->
+<div id="footer"><!-- Footer -->
+<div id="footer">
+  
+  <!-- Copyright -->
+  <ul class="copyright">
+    
+      <li>©BLOG of 楚虫. All rights reserved.</li>
+    
+    <li>Design: <a href="http://html5up.net/">HTML5 UP</a></li>
+    <li>Jekyll integration: <a href="https://chrisbobbe.github.io/">Chris Bobbe</a></li>
+  </ul>
+  
+</div>
+<div id="headerToggle"><a  class="toggle"></a></div></body></html>
