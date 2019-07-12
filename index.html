@@ -2,38 +2,21 @@
 <html >
 <head>
 <link rel="stylesheet" href="assets/css/index.css" type="text/css">
+<link rel="stylesheet" href="assets/css/tree.css" type="text/css">
 <meta charset="utf-8">
 <base target="_blank" />
 <title>Blog of 楚虫</title>
 
 <script type="text/javascript" src="assets/js/jquery.js"></script>
-<script>
-function toggle(){
-    var navBar = $("<p>等待开发</p>");
-    var sideBar = $("#toggleBar");
-    //我的逻辑上是先判断没有这个class，没有的话就添加，这个添加动作会触发宽度加长的过渡效果
-    if (!sideBar.hasClass("addWidth")) {
-        $("#toggleBar").addClass("addWidth");
-        navBar.addClass("dirty");
-        $("#first-child-of-toggleBar").prepend(navBar);
-    }
-    //同理，展开之后要切换，移除这个class来触发减小宽度的过渡效果
-    else {
-        $("#toggleBar").removeClass("addWidth");
-        $(".dirty").remove();
-    }
-}
-</script>
-
+<script type="text/javascript" src="assets/js/tree.js"></script>
 <style type="text/css">
     .dirty{
         opacity: 1;
     }
 
     .addWidth {
-            width:800px;
-            max-width: 46%!important;
-            transition: 1s;
+            max-width: 300px!important;
+            transition: max-width .5s;
     }
 
     .nonOpacity{
@@ -48,6 +31,7 @@ function toggle(){
 <body>
 
 <div class = "sidebar" id = "toggleBar">
+    <div id="tree-container"></div>
 
     <div style = "height: 40%; float: left; width:100%" id = "first-child-of-toggleBar">
     </div>
@@ -104,10 +88,10 @@ function toggle(){
             </div>
             <div style = "height:100%" >
                 <div style="width:25%; height:50%; float:left "></div>
-                <div class = "tag" >
+                <!-- <div class = "tag" >
                     <h1>&nbsp;# tag</h1>
                     <a><p>日志</p></a>(有待开发)
-                </div>
+                </div> -->
 
                 <div class = "clear"></div>
                 <div style="width:25%; height:50%; float:left "></div>
@@ -189,5 +173,22 @@ function toggle(){
     </div>
 </div>
 </body>
+<script type="text/javascript" src="assets/js/render.js"></script><!--Tree-->
+<script>
+        function toggle(){
+            var navBar = $("<p>等待开发</p>");
+            var sideBar = $("#toggleBar");
+            //我的逻辑上是先判断没有这个class，没有的话就添加，这个添加动作会触发宽度加长的过渡效果
+            if (!sideBar.hasClass("addWidth")) {
+                $("#toggleBar").addClass("addWidth");
+                tree.setShow();
+            }
+            //同理，展开之后要切换，移除这个class来触发减小宽度的过渡效果
+            else {
+                $("#toggleBar").removeClass("addWidth");
+                tree.setHide();
+            }
+        }
+</script>
 
 </html>
