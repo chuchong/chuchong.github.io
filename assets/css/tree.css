@@ -20,6 +20,10 @@
     transition: .2s;
 }
 
+.treeDiv_hide a{
+    pointer-events: none;
+}
+
 .treeUl{
     position: absolute;
     margin-left:20px;
