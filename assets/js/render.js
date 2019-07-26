@@ -22,6 +22,10 @@ const root = { 'id': 0,
                { 'id': 4,
                  'title': '服务器实验小结',
                  'a': 'blog/server_diary.html',
+                 'children': [] },
+               { 'id': 4,
+                 'title': '前端综合实验后记',
+                 'a': 'blog/final_diary.html',
                  'children': [] }
                ]
            },
