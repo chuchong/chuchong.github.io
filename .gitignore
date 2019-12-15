@@ -1,4 +1,4 @@
-
-/preparation
-*.sai
-/refer
+/_site
+*.gem
+.sass-cache
+Gemfile.lock
